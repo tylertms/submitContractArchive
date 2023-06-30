@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<script src="callKev.js"></script>
+
+<body>
+    <h2>Contract Archive Contribution</h2>
+    Please enter your Egg, Inc. ID below. It will not be stored, it is only used to fetch and store your contract
+    evaluation data.<br>
+    All IDs start with "EI" followed by 16 numbers:e.g. EI1234567890123456<br><br>
+
+    <form id="inputEID">
+        <input type="text" id="EID" value="EI"><br>
+        <input type="submit" value="submit">
+    </form>
+    <script>
+        const form = document.getElementById("inputEID");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            document.write(document.getElementById("EID").value)
+        });
+    </script>
+
+
+</body>
+
+</html>
