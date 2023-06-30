@@ -1,4 +1,4 @@
-const proto = require("./ei_pb")
+const proto = require("./proto/ei_pb")
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const express = require("express");
@@ -41,3 +41,7 @@ app.listen(80, async () => {
     await mongoose.connect(process.env.MONGODB_URI, { keepAlive: true });
     console.log('Connected to DB.');
 });
+
+
+//mongodb+srv://archive_write:EkfmzHRRkSjuW2K8@archive.l9o4gss.mongodb.net/archives
+//mongodb+srv://archive_view:ke9Pi8U21eGVCR0U@archive.l9o4gss.mongodb.net/archives
