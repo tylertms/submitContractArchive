@@ -1,4 +1,4 @@
-const proto = require("./proto/ei_pb")
+const proto = require("./lib/ei_pb")
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const express = require("express");
