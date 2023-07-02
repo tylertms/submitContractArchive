@@ -26,24 +26,16 @@ app.get(`/submit`, async function (req, res) {
         var response = await fetch(url, { method: "POST", body: params })
 
         var text = await response.text()
-        var resToSend
         if (!text.startsWith("ERROR")) {
             const archive = proto.ContractsArchive.deserializeBinary(proto.AuthenticatedMessage.deserializeBinary(text).getMessage()).toObject()
             await new schema({ archive: archive }).save()
-            resToSend = new Response("Thank you for submitting your contract archive!<br><br>In case you'd like to take a look, here it is:<br><br>"+JSON.stringify(archive, null, 2))
-            resToSend.headers.set("Access-Control-Allow-Origin", "*");
-            return res.send(resToSend)
-
+            return res.send("Thank you for submitting your contract archive!<br><br>In case you'd like to take a look, here it is:<br><br>"+JSON.stringify(archive, null, 2))
         } else {
-            resToSend = new Response("Error decoding this contract archive. Please double check the EID you have submitted!")
-            resToSend.headers.set("Access-Control-Allow-Origin", "*");
-            return res.send(resToSend)
+            return res.send("Error decoding this contract archive. Please double check the EID you have submitted!")
         }
     } catch (err) {
         console.log(err)
-        resToSend = new Response("Error decoding this contract archive. Please double check the EID you have submitted!")
-        resToSend.headers.set("Access-Control-Allow-Origin", "*");
-        return res.send(resToSend)
+        return res.send("Error decoding this contract archive. Please double check the EID you have submitted!")
     }
 });
 
