@@ -9,6 +9,7 @@ const schema = new mongoose.model('archive', new mongoose.Schema({ archive: Obje
 require('dotenv').config();
 
 app.get(`/submit`, async function (req, res) {
+    console.log("submitted")
     try {
         const rinfo = new proto.BasicRequestInfo()
             .setEiUserId(req.query.EID)
@@ -36,7 +37,7 @@ app.get(`/submit`, async function (req, res) {
     }
 });
 
-app.listen(80, async () => {
+app.listen(443, async () => {
     mongoose.set('strictQuery', false);
     await mongoose.connect(process.env.MONGODB_URI, { keepAlive: true });
     console.log('Connected to DB.');
