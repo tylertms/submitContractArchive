@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Contract Archive Contribution</h2>
+    Please enter your Egg, Inc. ID below. It will not be stored, it is only used to fetch and store your contract
+    evaluation data.<br>
+    All IDs start with "EI" followed by 16 numbers:e.g. EI1234567890123456<br>
+    Please only submit your EID once! Thank you!<br><br>
+
+    <form id="inputEID">
+        <input type="text" id="EID" value="EI"><br>
+        <input type="submit" value="submit">
+    </form>
+
+    <br>
+    <p id="output"></p>
+    
+    <script>
+        const form = document.getElementById("inputEID");
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            let EID = document.getElementById("EID").value
+            const response = await fetch("https://submitcontractarchive-mongoose.up.railway.app/submit?EID="+EID)
+            console.log(response)
+            document.getElementById('output').innerHTML = await response.text()
+        });
+    </script>
+
+</body>
+
+</html>
