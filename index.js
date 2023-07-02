@@ -1,6 +1,7 @@
 const proto = require("./lib/ei_pb")
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
+const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 
@@ -37,7 +38,7 @@ app.get(`/submit`, async function (req, res) {
     }
 });
 
-app.listen(443, async () => {
+app.listen(port, "0.0.0.0", async () => {
     mongoose.set('strictQuery', false);
     await mongoose.connect(process.env.MONGODB_URI, { keepAlive: true });
     console.log('Connected to DB.');
