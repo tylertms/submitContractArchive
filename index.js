@@ -3,7 +3,9 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 const port = process.env.PORT || 3000;
 const express = require("express");
+const cors = require('cors')
 const app = express();
+app.use(cors())
 
 const mongoose = require('mongoose');
 const schema = new mongoose.model('archive', new mongoose.Schema({ archive: Object }), 'maj')
