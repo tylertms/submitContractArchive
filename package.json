@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/tylertms/submitContractArchive/issues"
   },
-  "homepage": "https://github.com/tylertms/submitContractArchive#readme"
+  "homepage": "https://github.com/tylertms/submitContractArchive#readme",
+  "dependencies": {
+    "google-protobuf": "^3.21.2"
+  }
 }
